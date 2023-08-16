@@ -1,11 +1,16 @@
 import React from "react"
-import Navbar from "./Navbar.js"
+import NewPost from "./NewPost.js";
+import "./css/Home.css";
+import Navbar from './Navbar.js';
 
-const Home = ({user})=>{
+const Home = ({user,setUser})=>{
     return(
+        <>
+        <Navbar user={user} setUser={setUser}/>
         <div className="home-container">
-            <Navbar user={user}/>
+            {user && <NewPost user={user}/>}
         </div>
+        </>
     )
 }
 

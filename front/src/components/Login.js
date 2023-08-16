@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
-import {login} from "../services/user"
+import {login} from "../services/user";
+import "./css/LoginRegister.css";
 
 const Login = ({setUser}) => {
     const navigate = useNavigate();
@@ -9,8 +10,9 @@ const Login = ({setUser}) => {
     const [successMessage,setSuccessMessage] = useState(null);
     const [errorMessage,setErrorMessage] = useState(null);
 
-    const loginUser = async () =>{
+    const loginUser = async (event) =>{
         try {
+            event.preventDefault()
             const result = await login(username,password);
             setUser(result.data);
             setSuccessMessage("* Logged in!");
@@ -30,9 +32,9 @@ const Login = ({setUser}) => {
     }
 
     return (
-    <div className="register-body">
-        <div className="register-container">
-            <h2 className="register-logo">Sharinger</h2>
+    <div className="loginRegister-body">
+        <form onSubmit={(event)=>loginUser(event)} className="loginRegister-container">
+            <h2 className="loginRegister-logo">Sharinger</h2>
             {successMessage && 
             <div className="success-message">
                 {successMessage}
@@ -47,9 +49,9 @@ const Login = ({setUser}) => {
             <input placeholder="Username..." name="username" value={username} onChange={(event)=>setUsername(event.target.value)}></input>
             <label for="password">Password</label>
             <input type="password" placeholder="*****" name="password" value={password} onChange={(event)=>setPassword(event.target.value)}></input>
-            <button onClick={loginUser} className="register-button">Log in</button>
+            <button type="submit" className="loginRegister-button">Log in</button>
             <a className="go-back" href="" onClick={()=>navigate("/")}>Go back</a>
-        </div>
+        </form>
     </div>
   )
 }

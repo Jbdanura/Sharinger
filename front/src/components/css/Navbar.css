@@ -1,0 +1,89 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+    color: white;
+}
+
+.logo{
+    font-size: 20px;
+    margin-left: 20px;
+    color: rgb(85, 219, 96);
+    cursor: pointer;
+}
+.logo:hover{
+    color: rgb(74, 194, 84);
+}
+.user{
+    margin-right: 20px;
+}
+
+.search-bar input{
+    height: 30px;
+    margin-top: 15px;
+    padding-left: 10px;
+    width: 400px;
+    border-radius: 5px;
+    border: 1px solid rgb(14, 156, 14);
+}
+.search-bar {
+    display:flex;
+    flex-direction: row;
+}
+.search-bar button{
+    height: 34px;
+    align-items: center;
+    margin-top: 15px;
+    margin-left: -5px;
+    border: none;
+    color: white;
+    background-color: rgb(14, 156, 14);
+}
+.search-bar button:hover{
+    cursor: pointer;
+}
+.not-logged{
+    display: flex;
+}
+.not-logged *{
+    margin-right: 10px;
+}
+.not-logged h3{
+    cursor: pointer;
+}
+.not-logged h3:hover{
+    color: aliceblue;
+    transform: scale(1.03);
+}
+.user-icon{
+    width: 50px;
+    margin-top: 7px;
+    transform: translateX(-60%);
+}
+.user-icon:hover{
+    cursor:pointer;
+}
+.show-user-options{
+    position: absolute;
+    margin-left: -60px;
+    color: white;
+    text-align: center;
+    background-color: black;
+    border: 1px solid grey;
+    width: 100px;
+}
+.show-user-options p:hover{
+    cursor: pointer;
+}
+.show-user-options p{
+    padding-bottom: 5px;
+    border-bottom: 1px solid grey;
+}
+.hide-user-options{
+    display: none;
+}
+@media screen and (max-width: 800px) {
+    .navbar input{
+        width: 200px;
+    }
+}

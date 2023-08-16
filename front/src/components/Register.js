@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import {register} from "../services/user";
+import "./css/LoginRegister.css"
 
 const Register = () => {
   const navigate = useNavigate();
@@ -27,9 +28,9 @@ const Register = () => {
   }
 
   return (
-    <div className="register-body">
-      <div className="register-container">
-        <h2 className="register-logo">Sharinger</h2>
+    <div className="loginRegister-body">
+      <form onSubmit={(event)=>{createAccount(event)}} className="loginRegister-container">
+        <h2 className="loginRegister-logo">Sharinger</h2>
         {successMessage && 
           <div className="success-message">
             {successMessage}
@@ -44,9 +45,9 @@ const Register = () => {
         <input placeholder="Username..." name="username" value={username} onChange={(event)=>setUsername(event.target.value)}></input>
         <label for="password">Password</label>
         <input type="password" placeholder="*****" name="password" value={password} onChange={(event)=>setPassword(event.target.value)}></input>
-        <button onClick={(event)=>{createAccount(event)}} className="register-button">Register</button>
+        <button type="submit" className="loginRegister-button">Register</button>
         <a className="go-back" href="" onClick={()=>navigate("/")}>Go back</a>
-      </div>
+      </form>
     </div>
 
   )

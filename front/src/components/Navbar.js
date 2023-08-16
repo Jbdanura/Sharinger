@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
+import "./css/Navbar.css"
+import User from "../icons/user.png"
 
-const Navbar = ({user}) => {
+const Navbar = ({user,setUser}) => {
   const navigate = useNavigate();
+  const [userOptions,setUserOptions] = useState(false);
 
   return (
     <div className="navbar">
-        <h3 className="logo">Sharinger</h3>
+        <h3 className="logo" onClick={()=>navigate("/")}>Sharinger</h3>
         <form className="search-bar">
-          <input placeholder="Search username or group..."/>
+          <input placeholder="Search username"/>
           <button>Search</button>
         </form>
         {!user ? <div className="not-logged">
@@ -16,7 +19,13 @@ const Navbar = ({user}) => {
             <p>|</p>
             <h3 onClick={()=>navigate("/login")}>Log in</h3>
           </div> 
-          : <h3 className="user">User</h3>}
+          : <div className="user-options">
+              <img className="user-icon" src={User} onClick={()=>setUserOptions(!userOptions)}/>
+              <div className={`${userOptions ? "show-user-options" : "hide-user-options"}`}>
+                <p>My profile</p>
+                <p onClick={()=>{setUser(null);alert("Logged out")}}>Logout</p>
+              </div>
+            </div>}
         
     </div>
   )

@@ -1,0 +1,90 @@
+.loginRegister-container{
+    background-color: rgb(241, 241, 241);
+    margin: 0 auto;
+    width: 40vw;
+    margin-top: 20vh;
+    padding: 20px;
+    padding-right: 30px;
+    border-radius: 10px;
+}
+.loginRegister-container input{
+    width: 100%;
+    height: 25px;
+    border-radius: 2px;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid rgb(218, 218, 218);
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+.loginRegister-container label{
+    font-weight: bold;
+}
+.loginRegister-container .loginRegister-button{
+    margin: 0 auto;
+    border: none;
+    background-color: rgb(100, 189, 18);
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    border-radius: 5px;
+}
+.loginRegister-button:hover{
+    cursor: pointer;
+    background-color: rgb(90, 167, 19);
+}
+.loginRegister-container a{
+    display:  block;
+    margin-top: 10px;
+}
+.loginRegister-logo{
+    font-size: 30px;
+    width: 20%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    color: rgb(33, 156, 28);
+}
+.success-message{
+    padding: 5px;
+    color: green;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.error-message{
+    padding: 5px;
+    color: red;
+    font-weight: bold;
+    margin: 10px 0;
+}
+@media screen and (max-width: 800px) {
+    .loginRegister-container{
+        background-color: white;
+        width: 100%;
+        margin: 0;
+        padding: 0 5px;
+        border-radius: 0;
+    }
+    .loginRegister-body{
+        background-color: rgb(255, 255, 255);
+        width: 100vw;
+        position:absolute;
+    }
+    .loginRegister-container input{
+        width: 95%;
+        height: 30px;
+        border-radius: 2px;
+        margin: 5px 0;
+        border: 1px solid grey;
+        font-size: 15px;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+    .loginRegister-logo{
+        font-size: 25px;
+        width: 40%;
+        margin: 0 auto;
+        margin-top: 100px;
+        margin-bottom: 20px;
+        color: rgb(1, 92, 1);
+    }
+}
