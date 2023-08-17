@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import "./css/Navbar.css"
 import User from "../icons/user.png"
+import Button from '@mui/material/Button';
 
 const Navbar = ({user,setUser}) => {
   const navigate = useNavigate();

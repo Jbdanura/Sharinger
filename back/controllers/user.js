@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt")
 const usersRouter = require("express").Router()
 const jwt = require("jsonwebtoken")
 const User = require("../models/user")
-const getToken = require("../util/token")
 
 usersRouter.post("/create",async(req,res)=>{
     try {
@@ -42,7 +41,6 @@ usersRouter.post("/login",async(req,res)=>{
         const username = req.body.username;
         const password = req.body.password;
         const user = await User.find({username});
-        console.log(username,password,user)
         let token = {}
         if(!user){
             return res.status(400).json("Invalid user/password");
@@ -50,7 +48,7 @@ usersRouter.post("/login",async(req,res)=>{
             const samePassword = await bcrypt.compare(password,user[0].passwordHash);
             if(!samePassword) return res.status(400).json("Invalid user/password");
             const userForToken = {username};
-            token = jwt.sign(userForToken, process.env.SECRET)
+            token = jwt.sign(userForToken, process.env.SECRET,{expiresIn:"1800s"})
         }
         return res.status(200).json(token);
     } catch (error) {
