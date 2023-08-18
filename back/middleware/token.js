@@ -10,7 +10,6 @@ const getToken = async (req,res,next) => {
     return null;*/
     try {
         const token = req.header("authorization").substring(7);
-        console.log(token)
         if(!token) return res.status(401).json("Access denied. Please log in");
         jwt.verify(token,process.env.SECRET,(error,userToken)=>{
             if(error) return res.status(400).json("Invalid token")

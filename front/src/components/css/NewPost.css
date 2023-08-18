@@ -6,6 +6,7 @@
     padding: 10px 15px;
     color: white;
     border-radius: 7px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .new-post-container textarea{
     width: 100%;
@@ -13,6 +14,9 @@
     border: 1px solid grey;
     resize: none;
     font-size: 20px;
+}
+.new-post-container textarea::placeholder{
+    text-align: center;
 }
 .new-post-container button{
     background-color: rgb(91, 182, 91);
@@ -24,4 +28,16 @@
     transform: translateY(-5px);
     font-weight: bold;
     border-radius: 5px;
+}
+.post-error, .post-msg{
+    font-size: 22px;
+    font-weight: bold;
+    background-color: rgb(189, 0, 0);
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    color: white;
+}
+.post-msg{
+    background-color: green;
 }

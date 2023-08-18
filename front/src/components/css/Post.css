@@ -1,0 +1,20 @@
+.post {
+    background-color: whitesmoke;
+    width: 40vw;
+    border-radius: 10px;
+    margin-top: 40px;
+    margin-left: 6%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.post-header{
+    background-color: rgb(49, 49, 49);
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.post-content{
+    padding: 15px;
+    padding-bottom: 30px;
+}

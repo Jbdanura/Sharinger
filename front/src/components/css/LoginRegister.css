@@ -5,6 +5,7 @@
     margin-top: 20vh;
     padding: 20px;
     padding-right: 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
 }
 .loginRegister-container input{

@@ -42,7 +42,7 @@ usersRouter.post("/login",async(req,res)=>{
         const password = req.body.password;
         const user = await User.find({username});
         let token = {}
-        if(!user){
+        if(!user || user.length === 0){
             return res.status(400).json("Invalid user/password");
         } else {
             const samePassword = await bcrypt.compare(password,user[0].passwordHash);

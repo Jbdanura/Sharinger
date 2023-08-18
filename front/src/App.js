@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import './App.css';
 import Home from "./components/Home";
 import Register from "./components/Register";
@@ -6,8 +6,14 @@ import Login from './components/Login';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [user,setUser] = useState(null)
-
+  const [user,setUser] = useState(() => {
+    const saved = localStorage.getItem("user");
+    const value = JSON.parse(saved);
+    return value || "";
+  });
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(user));
+  }, [user]);
   return (
     <div className="App">
       <BrowserRouter>
