@@ -9,7 +9,7 @@ const NewPost = ({user}) => {
   const newPost = async (event) => {
     event.preventDefault();
     try {
-        const result = await newPostService(content,user)
+        const result = await newPostService(content,user.token)
         setMsg("* "+result.data)
         setTimeout(()=>{
           setMsg("")

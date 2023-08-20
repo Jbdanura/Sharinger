@@ -1,7 +1,7 @@
 const getToken = require("../middleware/token");
 const postsRouter = require("express").Router()
 const Post = require("../models/post.js")
-
+const User = require("../models/user.js")
 
 postsRouter.post("/new",getToken, async(req,res)=>{
     try {
@@ -31,6 +31,17 @@ postsRouter.post("/new",getToken, async(req,res)=>{
 postsRouter.get("/all",async(req,res)=>{
     const posts = await Post.find().sort({date:-1}).populate("author","username");
     return res.status(200).json(posts);
+})
+
+postsRouter.get("/:username",async(req,res)=>{
+    try {
+        const user = await User.find({username:req.params.username})
+        const posts = await Post.find({author:user}).populate("author","username")
+        return res.status(200).json(posts)
+    } catch (error) {
+        console.log(error)
+        return res.status(400).json(error)
+    }
 })
 
 module.exports = postsRouter

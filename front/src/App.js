@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Register from "./components/Register";
 import Login from './components/Login';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProfilePosts from './components/ProfilePosts';
 
 function App() {
   const [user,setUser] = useState(() => {
@@ -14,6 +15,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(user));
   }, [user]);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -21,6 +23,7 @@ function App() {
         <Route path="/" element={<Home user={user} setUser={setUser}/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/login" element={<Login setUser={setUser}/>}/>
+        <Route path="/:username" element={<ProfilePosts user={user} setUser={setUser}/>}/>
       </Routes>
       </BrowserRouter>
       

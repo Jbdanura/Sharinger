@@ -49,10 +49,11 @@ usersRouter.post("/login",async(req,res)=>{
             if(!samePassword) return res.status(400).json("Invalid user/password");
             const userForToken = {username};
             token = jwt.sign(userForToken, process.env.SECRET,{expiresIn:"1800s"})
+            return res.status(200).json({username,token});
         }
-        return res.status(200).json(token);
     } catch (error) {
         console.log(error)
+        return res.status(400).json({error})
     }
 })
 module.exports = usersRouter

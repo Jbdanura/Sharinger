@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import "./css/Navbar.css"
 import User from "../icons/user.png"
-import Button from '@mui/material/Button';
 
 const Navbar = ({user,setUser}) => {
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ const Navbar = ({user,setUser}) => {
           : <div className="user-options">
               <img className="user-icon" src={User} onClick={()=>setUserOptions(!userOptions)}/>
               <div className={`${userOptions ? "show-user-options" : "hide-user-options"}`}>
-                <p>My profile</p>
+                <p onClick={()=>navigate(`/${user.username}`)}>My profile</p>
                 <p onClick={()=>{setUser(null);alert("Logged out")}}>Logout</p>
               </div>
             </div>}

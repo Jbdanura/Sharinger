@@ -9,5 +9,8 @@ const getAllPostsService = async() =>{
     const result = await axios.get(baseUrl+"/posts/all")
     return result;
 }
-
-export {newPostService,getAllPostsService}
+const getProfilePostsService = async(username) => {
+    const result = await axios.get(baseUrl+`/posts/${username}`);
+    return result;
+}
+export {newPostService,getAllPostsService,getProfilePostsService}

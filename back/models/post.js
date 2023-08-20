@@ -15,7 +15,6 @@ const postSchema = new mongoose.Schema({
   
   postSchema.set('toJSON', {
     transform: (document, returnedObject) => {
-      delete returnedObject._id
       delete returnedObject.__v
     }
   })
