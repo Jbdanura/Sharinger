@@ -23,7 +23,6 @@ postsRouter.post("/new",getToken, async(req,res)=>{
         return res.status(200).json("Post created")
       
     } catch (error) {
-        console.log(error)
         return res.status(400).json(error);
     }
 })
@@ -39,9 +38,35 @@ postsRouter.get("/:username",async(req,res)=>{
         const posts = await Post.find({author:user}).populate("author","username")
         return res.status(200).json(posts)
     } catch (error) {
-        console.log(error)
         return res.status(400).json(error)
     }
 })
-
+postsRouter.delete("/:id",getToken,async(req,res)=>{
+    try {
+        const post = await Post.findById(req.params.id).populate("author","username");
+        if(post.author[0].username === req.user.username){
+            await post.deleteOne();
+            return res.status(200).json("Deleted post")
+        } else {
+            return res.status(400).json("You have no permission to delete that post")
+        }
+    } catch (error) {
+        return res.status(400).json({error})
+    }
+})
+postsRouter.patch("/:id",getToken,async(req,res)=>{
+    try {
+        const newContent = req.body.newContent;
+        const post = await Post.findById(req.params.id).populate("author","username");
+        if(post.author[0].username === req.user.username){
+            post.content = newContent;
+            await post.save();
+            return res.status(200).json("Edited post")
+        } else {
+            return res.status(400).json("You have no permission to edit that post")
+        }
+    } catch (error) {
+        return res.status(400).json({error})
+    }
+})
 module.exports = postsRouter

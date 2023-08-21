@@ -10,7 +10,7 @@ const Home = ({user,setUser})=>{
         <Navbar user={user} setUser={setUser}/>
         <div className="home-container">
             {user && <NewPost user={user}/>}
-            <AllPosts/>
+            <AllPosts user={user}/>
         </div>
         </>
     )

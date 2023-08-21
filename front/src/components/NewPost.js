@@ -13,9 +13,10 @@ const NewPost = ({user}) => {
         setMsg("* "+result.data)
         setTimeout(()=>{
           setMsg("")
-        },3000)
-        setContent("")
-        window.location.reload(false);
+          setContent("")
+          window.location.reload(false);
+        },1000)
+
     } catch (error) {
       setError("* "+error.response.data)
       setTimeout(()=>{

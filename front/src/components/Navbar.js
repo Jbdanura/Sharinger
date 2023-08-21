@@ -23,7 +23,7 @@ const Navbar = ({user,setUser}) => {
               <img className="user-icon" src={User} onClick={()=>setUserOptions(!userOptions)}/>
               <div className={`${userOptions ? "show-user-options" : "hide-user-options"}`}>
                 <p onClick={()=>navigate(`/${user.username}`)}>My profile</p>
-                <p onClick={()=>{setUser(null);alert("Logged out")}}>Logout</p>
+                <p onClick={()=>{setUser(null);localStorage.removeItem("user");alert("Logged out");window.location.reload(false);}}>Logout</p>
               </div>
             </div>}
         

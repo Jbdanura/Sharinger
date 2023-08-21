@@ -18,3 +18,56 @@
     padding: 15px;
     padding-bottom: 30px;
 }
+.delete-post-btn{
+    background-color: rgb(185, 0, 0);
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius:3px;
+}
+.delete-post-btn:hover,.edit-post-btn{
+    cursor:pointer;
+}
+.edit-post-btn{
+    background-color: rgb(206, 150, 48);
+    color: white;
+    padding: 5px;
+    border: none;
+    margin-left: 5px;
+    border-radius:3px;
+}
+
+.post-header-right{
+    display: flex;
+    align-items: center;
+}
+.post-admin{
+    margin-left: 10px;
+}
+.post-edit-input{
+    width: 99%;
+    height: 100px;
+    border: 1px solid grey;
+    resize: none;
+    font-size: 20px;
+}
+.post-edit-accept{
+    color: green;
+    border: none;
+    font-weight: bolder;
+    background-color: whitesmoke;
+    font-size: 25px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+.post-edit-cancel{
+    color: red;
+    border: none;
+    font-weight: bolder;
+    background-color: whitesmoke;
+    font-size: 25px;
+    margin-left: 10px;
+}
+.post-edit-accept:hover,.post-edit-cancel:hover{
+    cursor: pointer;
+}
