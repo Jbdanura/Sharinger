@@ -6,13 +6,19 @@ import User from "../icons/user.png"
 const Navbar = ({user,setUser}) => {
   const navigate = useNavigate();
   const [userOptions,setUserOptions] = useState(false);
+  const [search,setSearch] = useState("")
+
+  const searchUsername = (e) => {
+    e.preventDefault()
+    navigate(`/${search}`)
+  }
 
   return (
     <div className="navbar">
         <h3 className="logo" onClick={()=>navigate("/")}>Sharinger</h3>
-        <form className="search-bar">
-          <input placeholder="Search username"/>
-          <button>Search</button>
+        <form className="search-bar" onSubmit={(e)=>searchUsername(e)}>
+          <input placeholder="Search username" value={search} onChange={(e)=>setSearch(e.target.value)}/>
+          <button type="submit">Search</button>
         </form>
         {!user ? <div className="not-logged">
             <h3 onClick={()=>navigate("/register")}>Register</h3>

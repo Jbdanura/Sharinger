@@ -1,0 +1,8 @@
+.profile-posts-container{
+    width: 90vw;
+    margin: 0 auto;
+}
+.profile-posts-container h3{
+    margin-left: 10%;
+    font-size: 40px;
+}
