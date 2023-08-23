@@ -35,9 +35,13 @@ postsRouter.get("/all",async(req,res)=>{
 postsRouter.get("/:username",async(req,res)=>{
     try {
         const user = await User.find({username:req.params.username})
+        if(user.length === 0){
+            return res.status(404).send("user not found")
+        }
         const posts = await Post.find({author:user}).populate("author","username")
         return res.status(200).json(posts)
     } catch (error) {
+        console.log(error)
         return res.status(400).json(error)
     }
 })

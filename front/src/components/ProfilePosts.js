@@ -9,13 +9,14 @@ import "./css/ProfilePost.css"
 export const ProfilePosts = ({user,setUser}) => {
   const [posts,setPosts] = useState("");
   const {username} = useParams();
-
+  const [notFound,setNotFound] = useState(false)
   const getPosts = async () => {
     try {
         const result = await getProfilePostsService(username);
         setPosts(result.data)
+        setNotFound(false)
     } catch (error) {
-        console.log(error);
+        if(error.response.status === 404) setNotFound(true)
     }
   }
 
@@ -27,7 +28,8 @@ export const ProfilePosts = ({user,setUser}) => {
     <>
         <Navbar user={user} setUser={setUser}/>
         <div className='profile-posts-container'>
-          {posts.length === 0 && <h3>User not found</h3>}
+          {!notFound && <h3>{username}</h3>}
+          {notFound ? <h3>User not found</h3> : posts.length === 0 && <h3>No posts found</h3>}
           {username === user.username && <NewPost user={user}/>}
           <div className='profile-posts'>
               {posts && posts.map((post,i)=>

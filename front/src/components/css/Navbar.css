@@ -63,7 +63,7 @@
 .user-icon:hover{
     cursor:pointer;
 }
-.show-user-options{
+.show-user-options,.hide-user-options{
     position: absolute;
     margin-left: -60px;
     color: white;
@@ -71,6 +71,8 @@
     background-color: black;
     border: 1px solid grey;
     width: 100px;
+    transition: opacity 0.1s ease-in;
+    opacity: 0;
 }
 .show-user-options p:hover{
     cursor: pointer;
@@ -79,8 +81,9 @@
     padding-bottom: 5px;
     border-bottom: 1px solid grey;
 }
-.hide-user-options{
-    display: none;
+.show-user-options{
+    opacity: 1;
+    transition: opacity 0.1s ease-in;
 }
 @media screen and (max-width: 800px) {
     .navbar input{
