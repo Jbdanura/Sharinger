@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import "./css/Post.css"
-import { deletePostService,editPostService } from '../services/post'
+import { deletePostService,editPostService,likePostService } from '../services/post'
 
 const Post = ({post,user}) => {
 
@@ -34,6 +34,14 @@ const Post = ({post,user}) => {
       alert(error.response.data);
     }
   }
+  const likePost = async() => {
+    try {
+      const result = await likePostService(user.token,post._id);
+      console.log(result)
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
   return (
     <div className="post">
         <div className="post-header">
@@ -52,6 +60,10 @@ const Post = ({post,user}) => {
         <button className="post-edit-accept" onClick={()=>editPost()}>✔</button>
         <button className="post-edit-cancel" onClick={()=>setEditModal(!editModal)}>X</button></>
         : <p className="post-content">{post.content}</p> }
+        <div className="post-options">
+          <p onClick={()=>likePost()}>Like</p>
+          <p>Dislike</p>
+        </div>
     </div>
   )
 }

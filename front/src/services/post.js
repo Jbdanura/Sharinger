@@ -21,4 +21,8 @@ const editPostService = async(token,id,newContent) => {
     const result = await axios.patch(baseUrl + `/posts/${id}`,{newContent},{headers:{"Authorization":`bearer ${token}`}});
     return result;
 }
-export {newPostService,getAllPostsService,getProfilePostsService,deletePostService,editPostService}
+const likePostService = async(token,id)=>{
+    const result = await axios.post(baseUrl + `/posts/like/${id}`,{},{headers:{"Authorization":`bearer ${token}`}});
+    return result;
+}
+export {newPostService,getAllPostsService,getProfilePostsService,deletePostService,editPostService,likePostService}

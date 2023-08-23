@@ -7,6 +7,7 @@ const postSchema = new mongoose.Schema({
         maxLength: 5000
     },
     author:[{type:mongoose.Schema.Types.ObjectId, ref:"User", required:true}],
+    likes:[{type:String}],
     date:{
       type: Date,
       default: Date.now

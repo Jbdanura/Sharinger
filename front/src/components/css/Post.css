@@ -71,3 +71,9 @@
 .post-edit-accept:hover,.post-edit-cancel:hover{
     cursor: pointer;
 }
+.post-options{
+    display:flex;
+    background-color: grey;
+    height: 30px;
+    align-items: center;
+}
