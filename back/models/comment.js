@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const postSchema = new mongoose.Schema({
+const commentSchema = new mongoose.Schema({
     content: {
         type: String,
         required: true,
@@ -7,19 +7,18 @@ const postSchema = new mongoose.Schema({
         maxLength: 5000
     },
     author:[{type:mongoose.Schema.Types.ObjectId, ref:"User", required:true}],
-    likes:[{type:String}],
+    post:[{type:mongoose.Schema.Types.ObjectId,ref:"Post",required:true}],
     date:{
       type: Date,
       default: Date.now
-    },
-    comments:[{type:mongoose.Schema.Types.ObjectId, ref:"Comment"}]
+    }
   })
   
-  postSchema.set('toJSON', {
+  commentSchema.set('toJSON', {
     transform: (document, returnedObject) => {
       delete returnedObject.__v
     }
   })
-const Post = mongoose.model('Post', postSchema)
+const comment = mongoose.model('Comment', commentSchema)
   
-module.exports = Post
+module.exports = comment

@@ -25,4 +25,13 @@ const likePostService = async(token,id)=>{
     const result = await axios.post(baseUrl + `/posts/like/${id}`,{},{headers:{"Authorization":`bearer ${token}`}});
     return result;
 }
-export {newPostService,getAllPostsService,getProfilePostsService,deletePostService,editPostService,likePostService}
+const commentPostService = async(token,id,comment)=>{
+    const result = await axios.post(baseUrl + `/posts/comments/${id}`,{comment},{headers:{"Authorization":`bearer ${token}`}});
+    return result;
+}
+const getAllCommentsService = async(id)=>{
+    const result = await axios.get(baseUrl + `/posts/comments/${id}`);
+    return result;
+}
+export {newPostService,getAllPostsService,getProfilePostsService,deletePostService,
+    editPostService,likePostService,commentPostService,getAllCommentsService}

@@ -2,6 +2,7 @@ const getToken = require("../middleware/token");
 const postsRouter = require("express").Router()
 const Post = require("../models/post.js")
 const User = require("../models/user.js")
+const Comment = require("../models/comment.js")
 
 postsRouter.post("/new",getToken, async(req,res)=>{
     try {
@@ -28,8 +29,13 @@ postsRouter.post("/new",getToken, async(req,res)=>{
 })
 
 postsRouter.get("/all",async(req,res)=>{
-    const posts = await Post.find().sort({date:-1}).populate("author","username");
-    return res.status(200).json(posts);
+    try {
+        const posts = await Post.find().sort({date:-1}).populate("author","username").populate("comments");
+        return res.status(200).json(posts);
+    } catch (error) {
+        console.log(error)
+    }
+
 })
 
 postsRouter.get("/:username",async(req,res)=>{
@@ -86,6 +92,33 @@ postsRouter.post("/like/:id",getToken,async(req,res)=>{
             await post.save()
             return res.status(200).json("following")
         }
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({error});
+    }
+})
+postsRouter.post("/comments/:id",getToken,async(req,res)=>{
+    try {
+        const post = await Post.findById(req.params.id)
+        const content = req.body.comment
+        if(content.length === 0){
+            return res.status(400).send("Missing comment content")
+        }
+        const comment = new Comment({content,author:req.user,post})
+        await comment.save()
+        post.comments.push(comment)
+        await post.save()
+        return res.status(200).send("Created comment")
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({error});
+    }
+})
+postsRouter.get("/comments/:id",async(req,res)=>{
+    try {
+        const post = await Post.findById(req.params.id).populate("comments")
+        console.log(post)
+        return res.status(200).json(post)
     } catch (error) {
         console.log(error);
         return res.status(400).json({error});

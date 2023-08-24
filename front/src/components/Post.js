@@ -1,16 +1,28 @@
 import React,{useState,useEffect} from 'react'
 import "./css/Post.css"
 import { deletePostService,editPostService,likePostService } from '../services/post'
+import {useNavigate} from 'react-router-dom'
+import Comments from './Comments'
 
 const Post = ({post,user}) => {
 
   const [username,setUsername] = useState("")
   const [editModal,setEditModal] = useState(false)
   const [modalValue, setModalValue] = useState(post.content)
+  const [liked,setLiked] = useState(false)
+  const [likes,setLikes] = useState(0)
+  const [showLikesModal,setShowLikesModal] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(()=>{
     try {
       setUsername(user.username)
+      if(post.likes.includes(user.username)) {
+        setLiked(true)
+        setLikes(post.likes.length)
+      } else{
+        setLiked(false)
+      }
     } catch (error) {
       console.log(error)
     }
@@ -20,7 +32,6 @@ const Post = ({post,user}) => {
     try {
       const result = await deletePostService(user.token,post._id);
       window.location.reload(false);
-      console.log(result)
     } catch (error) {
       alert(error.response.data);
     }
@@ -29,7 +40,6 @@ const Post = ({post,user}) => {
     try {
       const result = await editPostService(user.token,post._id,modalValue);
       window.location.reload(false);
-      console.log(result)
     } catch (error) {
       alert(error.response.data);
     }
@@ -37,9 +47,14 @@ const Post = ({post,user}) => {
   const likePost = async() => {
     try {
       const result = await likePostService(user.token,post._id);
-      console.log(result)
+      setLiked(!liked)
+      if(liked === true){
+        setLikes(likes-1)
+      } else{
+        setLikes(likes+1)
+      }
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error);
     }
   }
   return (
@@ -59,11 +74,21 @@ const Post = ({post,user}) => {
         {editModal ? <><textarea className="post-edit-input" value={modalValue} onChange={(e)=>setModalValue(e.target.value)}></textarea>
         <button className="post-edit-accept" onClick={()=>editPost()}>✔</button>
         <button className="post-edit-cancel" onClick={()=>setEditModal(!editModal)}>X</button></>
-        : <p className="post-content">{post.content}</p> }
-        <div className="post-options">
-          <p onClick={()=>likePost()}>Like</p>
-          <p>Dislike</p>
-        </div>
+        : <div className="post-content">
+          <p className="post-likes-count" onClick={()=>setShowLikesModal(true)}>{likes}</p>
+         <p onClick={()=>likePost()} className={`${liked ? "post-liked" : "post-like"}`}>❤</p>
+        <p className="post-content">{post.content}</p> </div>}
+        {showLikesModal && 
+        <div className={`${showLikesModal ? "post-likes-modal-active" : "post-likes-modal"}`}>
+          <div className="post-likes-modal-content">
+            <span class="close" onClick={()=>setShowLikesModal(false)}>&times;</span>
+            <p>Liked by</p>
+            <div className="all-likes">
+              {post.likes.length > 0 && post.likes.map(like=><p className="all-like" onClick={()=>navigate(`/${like}`)}>❤ {like}</p>)}
+            </div>
+          </div>
+        </div>}
+        <Comments user={user} post={post}/>
     </div>
   )
 }

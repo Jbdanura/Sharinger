@@ -29,6 +29,10 @@
     font-weight: bold;
     border-radius: 5px;
 }
+.new-post-container button:hover{
+    background-color: rgb(80, 161, 80);
+    cursor: pointer;
+}
 .post-error, .post-msg{
     font-size: 22px;
     font-weight: bold;

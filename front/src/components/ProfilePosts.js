@@ -22,7 +22,7 @@ export const ProfilePosts = ({user,setUser}) => {
 
   useEffect(()=>{
     getPosts()
-  },[username])
+  },[user,username])
 
   return (
     <>
@@ -33,7 +33,7 @@ export const ProfilePosts = ({user,setUser}) => {
           {username === user.username && <NewPost user={user}/>}
           <div className='profile-posts'>
               {posts && posts.map((post,i)=>
-                  <Post post={post} key={i}/>
+                  <Post post={post} user={user} key={i}/>
               )}
           </div>
         </div>

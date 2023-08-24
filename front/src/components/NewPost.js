@@ -15,7 +15,7 @@ const NewPost = ({user}) => {
           setMsg("")
           setContent("")
           window.location.reload(false);
-        },1000)
+        },2000)
 
     } catch (error) {
       setError("* "+error.response.data)
