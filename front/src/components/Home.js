@@ -9,8 +9,17 @@ const Home = ({user,setUser})=>{
         <>
         <Navbar user={user} setUser={setUser}/>
         <div className="home-container">
-            {user && <NewPost user={user}/>}
-            <AllPosts user={user}/>
+            <div className="home-left">
+                left
+            </div>
+            <div className="home-mid">
+                {user && <NewPost user={user}/>}
+                <AllPosts user={user}/>
+            </div>
+            <div className="home-right">
+                right
+            </div>
+
         </div>
         </>
     )

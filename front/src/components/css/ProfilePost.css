@@ -1,8 +1,24 @@
 .profile-posts-container{
-    width: 90vw;
+    width: 50vw;
     margin: 0 auto;
 }
 .profile-posts-container h3{
     margin-left: 10%;
     font-size: 40px;
 }
+.profile-posts-container .new-post-container{
+    width: 80%;
+}
+@media screen and (max-width: 800px) {
+    .profile-posts-container {
+        background-color: none;
+        width: 95vw;
+        border-radius: 10px;
+        margin-top: 40px;
+        box-shadow: none
+    }
+    .profile-posts-container .new-post-container{
+        width: 100%;
+    }
+}
+

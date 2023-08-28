@@ -1,35 +1,52 @@
 .new-post-container{
+    width: 100%;
+    margin-top: 20px;
+}
+.new-post-btn{
+    height: 25px;
+    border: 1px solid green;
+    background-color: green;
+    padding: 10px;
+    padding-bottom: 25px;
+    color: white;
+    border-radius: 3px;
+    font-weight: bold;
+    margin: 0 auto;
+    text-align: center;
+    margin-left: 10px;
+}
+.new-post-btn:hover{
+    cursor: pointer;
+}
+.new-post-form{
     display: block;
-    width: 40%;
-    margin-left: 6%;
-    margin-top: 1%;
     padding: 10px 15px;
     color: white;
     border-radius: 7px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.new-post-container textarea{
-    width: 100%;
+.new-post-form textarea{
+    width: 99%;
     height: 100px;
     border: 1px solid grey;
     resize: none;
     font-size: 20px;
 }
-.new-post-container textarea::placeholder{
+.new-post-form textarea::placeholder{
     text-align: center;
 }
-.new-post-container button{
+.new-post-form button{
     background-color: rgb(91, 182, 91);
     border: none;
     color: white;
     text-align: center;
-    width: 101%;
+    width: 100%;
     padding: 10px;
     transform: translateY(-5px);
     font-weight: bold;
     border-radius: 5px;
 }
-.new-post-container button:hover{
+.new-post-form button:hover{
     background-color: rgb(80, 161, 80);
     cursor: pointer;
 }
@@ -44,4 +61,11 @@
 }
 .post-msg{
     background-color: green;
+}
+
+
+@media screen and (max-width: 800px) {
+    .new-post-form button{
+        width: 101%;
+    }
 }

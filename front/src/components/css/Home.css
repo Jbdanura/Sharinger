@@ -1,4 +1,15 @@
 .home-container{
-    width: 90vw;
+    width: 80vw;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+@media screen and (max-width: 800px) {
+    .home-container{
+        display: block;
+        width: 95vw;
+    }
+    .home-left,.home-right{
+        display: none;
+    }
 }

@@ -46,6 +46,10 @@ const Post = ({post,user}) => {
   }
   const likePost = async() => {
     try {
+      if(!user) {
+        alert("You must be logged in to like")
+        return
+      } 
       const result = await likePostService(user.token,post._id);
       setLiked(!liked)
       if(liked === true){

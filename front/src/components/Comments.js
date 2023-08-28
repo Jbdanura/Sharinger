@@ -22,6 +22,10 @@ const Comments = ({user,post}) => {
 
   const newComment = async(e) => {
     try {
+      if(!user) {
+        alert("You must be logged in to comment")
+        return
+      } 
       e.preventDefault()
       const result = await commentPostService(user.token,post._id,commentContent)
       console.log(result) 

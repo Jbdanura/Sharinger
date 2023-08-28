@@ -3,7 +3,6 @@
     width: 40vw;
     border-radius: 10px;
     margin-top: 40px;
-    margin-left: 6%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .post-header{
@@ -137,3 +136,15 @@
     cursor: pointer;
     color: green;
 }
+
+@media screen and (max-width: 800px) {
+    .post {
+        background-color: whitesmoke;
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 40px;
+        margin-left: 0;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+}
+
