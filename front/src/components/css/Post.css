@@ -136,7 +136,9 @@
     cursor: pointer;
     color: green;
 }
-
+.post-header .post-username:hover{
+    cursor: pointer;
+}
 @media screen and (max-width: 800px) {
     .post {
         background-color: whitesmoke;

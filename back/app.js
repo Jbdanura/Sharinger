@@ -1,4 +1,5 @@
 const express = require("express")
+require('express-async-errors');
 const { connect } = require("./util/db")
 const app = express()
 const usersRouter = require("./controllers/user")
@@ -18,5 +19,10 @@ app.get("/",(req,res)=>{
 })
 app.use("/users",usersRouter)
 app.use("/posts",postsRouter)
+
+app.use((err, req, res, next) => {
+    res.json(err)
+    next(err);
+});
 
 connect()

@@ -2,7 +2,53 @@
     width: 80vw;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    transform: translateX(-2%)
+}
+.home-myprofile{
+    border: 2px solid green;
+    color: green;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+    border-radius: 3px;
+    padding: 5px 20px;
+    padding-bottom: 20px;
+}
+.home-myprofile button{
+    border: none;
+    padding: 10px 40px;
+    font-size: 20px;
+    color: white;
+    background-color: green;
+}
+.home-myprofile button:hover{
+    cursor: pointer;
+    background-color: rgb(0, 95, 0);
+}
+.recommended-user{
+    background-color: whitesmoke;
+    margin-top: 20px;
+}
+.recommended-user h3{
+    background-color: green;
+    padding: 15px 10px;
+    color: white;
+}
+.recommended-user ul{
+    list-style-type: circle;
+    padding-bottom: 10px;
+}
+.recommended-user li{
+    font-size: 17px;
+    padding: 5px 0;
+    color: green;
+    font-weight: 600;
+    margin-left: 40px;
+}
+.recommended-user li:hover{
+    transform: scale(1.1);
+    cursor: pointer;
 }
 @media screen and (max-width: 800px) {
     .home-container{

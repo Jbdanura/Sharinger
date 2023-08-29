@@ -25,14 +25,6 @@ usersRouter.post("/create",async(req,res)=>{
     }
 })
 
-usersRouter.get("/all",async(req,res)=>{
-    try {
-        const users = await User.find({})
-        res.json(users)
-    } catch (error) {
-        console.log(error)
-    }
-})
 usersRouter.post("/login",async(req,res)=>{
     try {
         if(!req.body.username || !req.body.password){
@@ -54,6 +46,14 @@ usersRouter.post("/login",async(req,res)=>{
     } catch (error) {
         console.log(error)
         return res.status(400).json({error})
+    }
+})
+usersRouter.get("/random",async(req,res)=>{
+    try {
+        const users = await User.find({}).limit(10)
+        res.json(users)
+    } catch (error) {
+        console.log(error)
     }
 })
 module.exports = usersRouter

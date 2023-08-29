@@ -11,7 +11,6 @@ const Comments = ({user,post}) => {
     try {
         const result = await getAllCommentsService(post._id);
         setComments(result.data.comments)
-        console.log(comments)
     } catch (error) {
         console.log(error)
     }
@@ -32,6 +31,9 @@ const Comments = ({user,post}) => {
       window.location.reload(false)
     } catch (error) {
       console.log(error)
+      if(error.response){
+        alert(error.response.data)
+      }
     }
 
   }

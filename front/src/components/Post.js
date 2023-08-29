@@ -59,14 +59,15 @@ const Post = ({post,user}) => {
       }
     } catch (error) {
       console.log(error);
+      if(error.response) alert(error.response.data)
     }
   }
   return (
     <div className="post">
         <div className="post-header">
-            <p>{post.author[0].username}</p> 
+            <p className="post-username" onClick={()=>navigate(`/${post.author[0].username}`)}>{post.author[0].username}</p> 
             <div className="post-header-right">
-            <p>{post.date.substring(0,10)} {post.date.substring(11,19)} </p>
+            <p>{post.date.substring(0,10)} {post.date.substring(11,16)} </p>
             {username === post.author[0].username &&
              <div className="post-admin">
                 <button className="delete-post-btn" onClick={()=>deletePost()}>Delete</button>

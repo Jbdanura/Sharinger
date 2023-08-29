@@ -73,6 +73,7 @@
     width: 100px;
     transition: opacity 0.1s ease-in;
     opacity: 0;
+    z-index: 1;
 }
 .show-user-options p:hover{
     cursor: pointer;
@@ -106,10 +107,16 @@
 }
 @media screen and (max-width: 300px) {
     .navbar input{
-        width: 100px;
+        width: 80px;
         font-size: 12px;
     }
     .logo{
-        font-size: 18px;
+        font-size: 15px;
+    }
+    .not-logged{
+        font-size: 12px;
+    }
+    .not-logged *{
+        margin-right: 1px;
     }
 }

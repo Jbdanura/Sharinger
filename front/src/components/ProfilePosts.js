@@ -21,6 +21,7 @@ export const ProfilePosts = ({user,setUser}) => {
   }
 
   useEffect(()=>{
+    setPosts("")
     getPosts()
   },[user,username])
 

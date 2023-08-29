@@ -30,7 +30,7 @@
     height: 100px;
     border: 1px solid grey;
     resize: none;
-    font-size: 20px;
+    font-size: 17px;
 }
 .new-post-form textarea::placeholder{
     text-align: center;

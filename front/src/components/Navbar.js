@@ -17,7 +17,7 @@ const Navbar = ({user,setUser}) => {
     <div className="navbar">
         <h3 className="logo" onClick={()=>navigate("/")}>Sharinger</h3>
         <form className="search-bar" onSubmit={(e)=>searchUsername(e)}>
-          <input placeholder="Search username" value={search} onChange={(e)=>setSearch(e.target.value)}/>
+          <input placeholder="Search user..." value={search} onChange={(e)=>setSearch(e.target.value)}/>
           <button type="submit">Search</button>
         </form>
         {!user ? <div className="not-logged">
