@@ -1,5 +1,5 @@
 .profile-posts-container{
-    width: 50vw;
+    width: 40vw;
     margin: 0 auto;
 }
 .profile-posts-container h3{
@@ -7,8 +7,62 @@
     font-size: 40px;
 }
 .profile-posts-container .new-post-container{
-    width: 80%;
+    width: 95%;
 }
+.profile-post-header{
+    display: flex;
+    padding: 10px;
+    background-color: whitesmoke;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 2px solid rgb(49, 49, 49);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.profile-post-image{
+    width: 130px;
+}
+.profile-post-info{
+    margin-left: 20px;
+    width: 100%;
+}
+.profile-post-info h4{
+    font-size: 23px;
+}
+.profile-post-follow{
+    border: none;
+    color: green;
+    border: 1px solid green;
+    padding: 5px 15px;
+    font-weight: bolder;
+    font-size: 19px;
+}
+.profile-post-follow:hover{
+    cursor: pointer;
+}
+.profile-post-follow:hover{
+    background-color: green;
+    border: none;
+    color: white;
+}
+.profile-post-info-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.profile-post-info-followers{
+    display: flex;
+    margin-right: 20px;
+}
+.profile-post-info-followers p{
+    margin-right: 10px;
+    text-decoration: underline;
+}
+@media screen and (max-width: 1200px) {
+    .profile-posts-container {
+        width: 60vw;
+    }
+}
+
 @media screen and (max-width: 800px) {
     .profile-posts-container {
         background-color: none;
@@ -18,7 +72,17 @@
         box-shadow: none
     }
     .profile-posts-container .new-post-container{
-        width: 100%;
+        width: 90%;
+    }
+    .profile-post-image{
+        height: 100px;
+    }
+    .profile-post-info-top{
+        display: block;
+        margin-top: -20px;
+    }
+    .profile-post-info-followers{
+        margin-top: -20px;
     }
 }
 

@@ -5,6 +5,7 @@ import Post from './Post';
 import Navbar from './Navbar.js';
 import NewPost from "./NewPost.js";
 import "./css/ProfilePost.css"
+import UserImage from "../icons/user.png"
 
 export const ProfilePosts = ({user,setUser}) => {
   const [posts,setPosts] = useState("");
@@ -29,7 +30,19 @@ export const ProfilePosts = ({user,setUser}) => {
     <>
         <Navbar user={user} setUser={setUser}/>
         <div className='profile-posts-container'>
-          {!notFound && <h3>{username}</h3>}
+          {!notFound && <div className="profile-post-header">
+            <img className="profile-post-image" src={UserImage}/>
+            <div className="profile-post-info">
+              <div className="profile-post-info-top">
+                <h4>{username}</h4>
+                <div className="profile-post-info-followers">
+                  <p>13 followers</p>
+                  <p>11 following</p>
+                </div>
+              </div>
+              <button className="profile-post-follow">Follow</button>
+            </div>
+          </div>}
           {notFound ? <h3>User not found</h3> : posts.length === 0 && <h3>No posts found</h3>}
           {username === user.username && <NewPost user={user}/>}
           <div className='profile-posts'>

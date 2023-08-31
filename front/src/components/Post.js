@@ -66,9 +66,9 @@ const Post = ({post,user}) => {
   return (
     <div className="post">
         <div className="post-header">
-            <div className="post-header-left">
+            <div className="post-header-left" onClick={()=>navigate(`/${post.author[0].username}`)}>
               <img className="post-userIcon" src={UserImage}/>
-              <p className="post-username" onClick={()=>navigate(`/${post.author[0].username}`)}>{post.author[0].username}</p> 
+              <p className="post-username">{post.author[0].username}</p> 
             </div>
             <div className="post-header-right">
             <p>{post.date.substring(0,10)} {post.date.substring(11,16)} </p>

@@ -12,6 +12,15 @@ usersRouter.post("/create",async(req,res)=>{
         if(!username || !password) {
             return res.status(400).json("fields incomplete")
         }
+        if(username.length > 10 || username.length < 3){
+            return res.status(400).json("username must be between 3 and 15 characters long")
+        }
+        if (!/^[a-zA-Z]+$/.test(username)){
+            return res.status(400).json("username must be only letters")
+        }
+        if(password.length > 20 || password.length < 3){
+            return res.status(400).json("password must be between 3 and 20 characters long")
+        }
         const existsUser = await User.findOne({username})
         if(existsUser){
             return res.status(400).json("username already exists")

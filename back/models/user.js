@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const userSchema = new mongoose.Schema({
-    username: String,
+    username: [{type:String,maxLength:10,minLength:3}],
     passwordHash: String,
     posts:[{type:mongoose.Schema.Types.ObjectId, ref:"Post"}]
   })
