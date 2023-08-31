@@ -3,6 +3,7 @@ import "./css/Post.css"
 import { deletePostService,editPostService,likePostService } from '../services/post'
 import {useNavigate} from 'react-router-dom'
 import Comments from './Comments'
+import UserImage from "../icons/user.png"
 
 const Post = ({post,user}) => {
 
@@ -65,7 +66,10 @@ const Post = ({post,user}) => {
   return (
     <div className="post">
         <div className="post-header">
-            <p className="post-username" onClick={()=>navigate(`/${post.author[0].username}`)}>{post.author[0].username}</p> 
+            <div className="post-header-left">
+              <img className="post-userIcon" src={UserImage}/>
+              <p className="post-username" onClick={()=>navigate(`/${post.author[0].username}`)}>{post.author[0].username}</p> 
+            </div>
             <div className="post-header-right">
             <p>{post.date.substring(0,10)} {post.date.substring(11,16)} </p>
             {username === post.author[0].username &&

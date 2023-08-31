@@ -29,7 +29,23 @@
     font-weight: bold;
     border: 1px solid rgba(0, 71, 0, 0.527);
 }
-
+.comment{
+    display: flex;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.301);
+}
+.comment-author{
+    font-style: italic;
+    color: rgb(0, 172, 0);
+    font-weight:bold;
+    margin-left: 10px;
+}
+.comment-author:hover{
+    color: rgb(0, 202, 0);
+    cursor: pointer;
+}
+.comment-content{
+    margin-left: 5px;
+}
 @media screen and (max-width: 800px) {
     .new-content input{
         width: 75%;

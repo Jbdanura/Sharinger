@@ -5,6 +5,7 @@ import "./css/Home.css";
 import Navbar from './Navbar.js';
 import AllPosts from "./AllPosts.js";
 import {getRandomUsersService} from "../services/user.js"
+import UserIcon from "../icons/user.png"
 
 const Home = ({user,setUser})=>{
     const navigate = useNavigate()
@@ -39,12 +40,13 @@ const Home = ({user,setUser})=>{
                 <AllPosts user={user}/>
             </div>
             <div className="home-right">
-                <div className="recommended-user">
+                <div className="recommended-users">
                     <h3>Recommended users</h3>
-                    <ul>
                         {users && users.map(recommendedUser=>
-                        <li onClick={()=>navigate(`/${recommendedUser.username}`)}>{recommendedUser.username}</li>)}
-                    </ul>
+                        <div className="recommended-user" onClick={()=>navigate(`/${recommendedUser.username}`)}>
+                            <img className="recommended-userIcon" src={UserIcon}/>
+                            <p>{recommendedUser.username}</p>
+                        </div>)}
                 </div>
             </div>
 

@@ -116,7 +116,11 @@ postsRouter.post("/comments/:id",getToken,async(req,res)=>{
 })
 postsRouter.get("/comments/:id",async(req,res)=>{
     try {
-        const post = await Post.findById(req.params.id).populate("comments")
+        const post = await Post.findById(req.params.id).populate({
+            path: "comments",
+            populate: { path: "author", select: "username" } // Populate comments' author with only username
+          })
+        console.log(post)
         return res.status(200).json(post)
     } catch (error) {
         console.log(error);

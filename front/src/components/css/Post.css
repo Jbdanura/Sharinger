@@ -139,6 +139,13 @@
 .post-header .post-username:hover{
     cursor: pointer;
 }
+.post-header-left{
+    display: flex;
+}
+.post-userIcon{
+    width: 45px;
+    margin: 3px 10px 3px -5px;
+}
 @media screen and (max-width: 800px) {
     .post {
         background-color: whitesmoke;

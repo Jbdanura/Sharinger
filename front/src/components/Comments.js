@@ -1,11 +1,13 @@
 import React,{useState,useEffect} from 'react'
 import { getAllCommentsService,commentPostService } from '../services/post'
 import "./css/Comments.css"
+import {useNavigate} from "react-router-dom"
 
 const Comments = ({user,post}) => {
   const [comments,setComments] = useState(null)
   const [showComments,setShowComments] = useState(false)
   const [commentContent,setCommentContent] = useState("")
+  const navigate = useNavigate()
 
   const getComments = async () => {
     try {
@@ -43,7 +45,10 @@ const Comments = ({user,post}) => {
       <p className="comments-total" onClick={()=>setShowComments(!showComments)}>{`+ Comments (${comments ? comments.length : 0})`}</p>
       {showComments && <div className="show-comments">
         {comments ? comments.map(comment=>
-          <div className="comment">{comment.content}</div>)
+          <div className="comment">
+              <p className="comment-author" onClick={()=>navigate(`/${comment.author[0].username}`)}>{comment.author[0].username}:</p>
+              <p className="comment-content"> {comment.content}</p>
+            </div>)
            : null}
         <form className="new-content" onSubmit={(e)=>newComment(e)}>
           <input type="text" placeholder="Comment..." value={commentContent} onChange={(e)=>setCommentContent(e.target.value)}></input>

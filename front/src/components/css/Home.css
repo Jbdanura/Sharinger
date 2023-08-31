@@ -26,29 +26,36 @@
     cursor: pointer;
     background-color: rgb(0, 95, 0);
 }
-.recommended-user{
+.recommended-users{
     background-color: whitesmoke;
     margin-top: 20px;
 }
-.recommended-user h3{
+.recommended-users h3{
     background-color: green;
     padding: 15px 10px;
     color: white;
 }
-.recommended-user ul{
-    list-style-type: circle;
-    padding-bottom: 10px;
-}
-.recommended-user li{
-    font-size: 17px;
-    padding: 5px 0;
-    color: green;
-    font-weight: 600;
-    margin-left: 40px;
-}
-.recommended-user li:hover{
+.recommended-users li:hover{
     transform: scale(1.1);
     cursor: pointer;
+}
+.recommended-user{
+    margin: 10px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.575);
+    display: flex;
+}
+.recommended-userIcon{
+    width: 55px;
+    padding-bottom: 5px;
+}
+.recommended-user p{
+    color: green;
+    font-weight: bolder;
+    margin-left: 10px;
+}
+.recommended-user:hover{
+    cursor: pointer;
+    background-color: rgb(211, 211, 211);
 }
 @media screen and (max-width: 800px) {
     .home-container{
