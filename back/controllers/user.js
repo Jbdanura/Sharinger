@@ -7,7 +7,6 @@ const User = require("../models/user")
 
 usersRouter.post("/create",async(req,res)=>{
     try {
-        console.log("call")
         const {username,password} = req.body
         if(!username || !password) {
             return res.status(400).json("fields incomplete")

@@ -82,15 +82,16 @@ postsRouter.patch("/:id",getToken,async(req,res)=>{
 postsRouter.post("/like/:id",getToken,async(req,res)=>{
     try {
         const post = await Post.findById(req.params.id).populate("likes")
-        if(post.likes.includes(req.user.username)){
-            const newLikes = post.likes.filter(username => username !== req.user.username)
+        const username = req.user.username[0]
+        if(post.likes.includes(username)){
+            const newLikes = post.likes.filter(usernameOc => usernameOc !== username)
             post.likes = newLikes
             await post.save()
-            return res.status(200).json("removed follow")
+            return res.status(200).json("removed like")
         } else {
-            post.likes.push(req.user.username)
+            post.likes.push(username)
             await post.save()
-            return res.status(200).json("following")
+            return res.status(200).json("liked")
         }
     } catch (error) {
         console.log(error);

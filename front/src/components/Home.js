@@ -29,12 +29,6 @@ const Home = ({user,setUser})=>{
         <>
         <Navbar user={user} setUser={setUser}/>
         <div className="home-container">
-            <div className="home-left">
-                {user && <div className="home-myprofile">
-                    <h3>{user.username}</h3>
-                    <button onClick={()=>navigate(`/${user.username}`)}>View profile</button>
-                </div>}
-            </div>
             <div className="home-mid">
                 {user && <NewPost user={user}/>}
                 <AllPosts user={user}/>

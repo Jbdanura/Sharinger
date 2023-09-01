@@ -14,4 +14,8 @@ const getRandomUsersService = async () => {
     const result = await axios.get(baseUrl + "/users/random")
     return result
 }
-export {register,login,getRandomUsersService};
+const followUserService = async (token,username) => {
+    const result = await axios.post(baseUrl+`/users/follow`,{username},{headers:{"Authorization":`bearer ${token}`}})
+    return result
+}
+export {register,login,getRandomUsersService,followUserService};

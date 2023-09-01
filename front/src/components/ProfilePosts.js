@@ -40,7 +40,7 @@ export const ProfilePosts = ({user,setUser}) => {
                   <p>11 following</p>
                 </div>
               </div>
-              <button className="profile-post-follow">Follow</button>
+              {username !== user.username && <button className="profile-post-follow">Follow</button>}
             </div>
           </div>}
           {notFound ? <h3>User not found</h3> : posts.length === 0 && <h3>No posts found</h3>}

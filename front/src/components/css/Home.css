@@ -3,7 +3,7 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
-    transform: translateX(-2%)
+    transform: translateX(5%);
 }
 .home-myprofile{
     border: 2px solid green;
@@ -61,6 +61,7 @@
     .home-container{
         display: block;
         width: 95vw;
+        transform: none;
     }
     .home-left,.home-right{
         display: none;

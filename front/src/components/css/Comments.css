@@ -1,9 +1,9 @@
 .comments-container{
-    background-color: rgb(63, 63, 63);
+    background-color: rgba(63, 63, 63, 0.774);
 }
 .comments-total{
     color: white;
-    padding: 10px;
+    padding: 5px;
 }
 .comments-total:hover{
     cursor: pointer;
